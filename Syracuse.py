@@ -3,7 +3,7 @@ n = int(input("Entrez un entier:"))
 L = 0
 if n > 0:print("Suite de Syracuse pour n={0}".format(n))
 
-# Loop qui s'arrete quand n = 1.
+# Boucle qui s'arrete quand n = 1.
 while n != 1: 
     L = L+1
     if n == 0:  # Pour invalider 0.
