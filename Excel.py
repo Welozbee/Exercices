@@ -1,5 +1,5 @@
 # Input d'utilisateur.
-inp = input("Entrez la colonne et la ligne sérapés par un espace:")
+inp = str(input("Entrez la colonne et la ligne sérapés par un espace:")).upper()
 
 # Separer Ligne.
 ligne = [int(i) for i in inp.split() if i.isdigit()]
