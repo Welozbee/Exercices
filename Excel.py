@@ -1,13 +1,21 @@
-# Input d'utilisateur.
-inp = str(input("Entrez la colonne et la ligne sérapés par un espace:")).upper()
+import re
 
-# Separer Ligne.
-ligne = [int(i) for i in inp.split() if i.isdigit()]
+# Input d'utilisateur, Majuscule et Enlever espaces.
+inp = re.sub(r"\s+", "", str(input("Entrez la cordonée Excel:")).upper())
+p = True #Eviter erreur
 
-# Separer Colonne 
-cln = [str(s) for s in inp.split() if s.isdigit() == False]
-T = len(cln)
-if T == 1:cln = cln[0] # Transformer la liste en variable.
+#Separer Colonne et ligne
+lst = re.match(r'([A-Za-z]+)(\d+)', inp).groups()
+if len(lst) == 2: 
+    if lst[0].isdigit:
+        lgn = lst[1]
+        cln = lst[0]
+    else:
+        lgn = lst[0]
+        cln = lst[1]
+else:
+    p= False
+    print("Erreur")
 
 # Fonction pour calculer le nombre de la colonne.
 def colnum(cln):
@@ -17,8 +25,9 @@ def colnum(cln):
     return n
 
 # Print les resultats.
-print("Colonne= " + str(colnum(cln)))
-print("Ligne= " + str(ligne[0]))
+if p == True:
+    print("Colonne= " + str(colnum(cln)))
+    print("Ligne= " + lgn)
 
 # Eviter que la console se ferme directement.
 input("Appuyez Enter pour fermer cette fenetre.")
